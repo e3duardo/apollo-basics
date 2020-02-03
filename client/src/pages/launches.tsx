@@ -6,8 +6,8 @@ import { LaunchTile, Header, Button, Loading } from "../components";
 import { RouteComponentProps } from "@reach/router";
 import * as GetLaunchListTypes from "./__generated__/GetLaunchList";
 
-export const LAUNCH_TITLE_DATA = gql`
-  fragment LaunchTitle on Launch {
+export const LAUNCH_TILE_DATA = gql`
+  fragment LaunchTile on Launch {
     id
     isBooked
     rocket {
@@ -27,11 +27,11 @@ const GET_LAUNCHES = gql`
       cursor
       hasMore
       launches {
-        ...LaunchTitle
+        ...LaunchTile
       }
     }
   }
-  ${LAUNCH_TITLE_DATA}
+  ${LAUNCH_TILE_DATA}
 `;
 
 interface LaunchesProps extends RouteComponentProps {}

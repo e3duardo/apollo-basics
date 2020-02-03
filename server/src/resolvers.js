@@ -81,7 +81,7 @@ module.exports = {
       if (!launchIds.length) return [];
 
       return (
-        dataSources.launchAPI.getLaunchesIds({
+        dataSources.launchAPI.getLaunchesByIds({
           launchIds
         }) || []
       );
