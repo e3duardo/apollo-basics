@@ -12,6 +12,7 @@ import { LAUNCH_TITLE_DATA } from "./launches";
 export const GET_LAUNCH_DETAILS = gql`
   query LaunchDetail($launchId: ID!) {
     launch(id: $launchId) {
+      isInCart @client
       site
       rocket {
         type
