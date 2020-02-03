@@ -6,25 +6,32 @@ import { LaunchTile, Header, Button, Loading } from "../components";
 import { RouteComponentProps } from "@reach/router";
 import * as GetLaunchListTypes from "./__generated__/GetLaunchList";
 
+export const LAUNCH_TITLE_DATA = gql`
+  fragment LaunchTitle on Launch {
+    id
+    isBooked
+    rocket {
+      id
+      name
+    }
+    mission {
+      name
+      missionPatch
+    }
+  }
+`;
+
 const GET_LAUNCHES = gql`
   query launchList($after: String) {
     launches(after: $after) {
       cursor
       hasMore
       launches {
-        id
-        isBooked
-        rocket {
-          id
-          name
-        }
-        mission {
-          name
-          missionPatch
-        }
+        ...LaunchTitle
       }
     }
   }
+  ${LAUNCH_TITLE_DATA}
 `;
 
 interface LaunchesProps extends RouteComponentProps {}
